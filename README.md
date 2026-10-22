@@ -1,6 +1,6 @@
 # Royal Petals — A Digital Floristry Experience
 
-An independent public case study for the digital transformation of Royal Petals Namibia, designed and engineered by [SolarSpin Technologies](https://solarspin-namibia.pages.dev/).
+An independent public case study for the digital transformation of Royal Petals Namibia, designed and engineered by [SolarSpin Technologies](https://solarspin.tech/).
 
 [Visit the live experience](https://royal-petals.pages.dev/) · [Royal Petals on Instagram](https://www.instagram.com/royal_petals_nam/)
 
@@ -25,25 +25,27 @@ The creative system treats each visit like entering a modern floral atelier:
 ### Client experience
 
 - Responsive, installable progressive web app
-- Live product catalogue and availability states
+- Twelve-product live catalogue covering signature bouquets, sculptural wraps, hatboxes, reveal boxes, keepsake drawers, and flower-and-chocolate compositions
 - Arrangement customisation, personal notes, and bouquet enquiries
 - Persistent cart and return-client journey
 - Cash, EFT, and wallet checkout foundations, with a future TPTS integration seam
-- Interactive delivery map and location selection
+- Details-first delivery checkout with an optional interactive precision pin
 - Concierge-led product recommendations
 - Royal Circle loyalty concept and rewards ledger
 - Bespoke commission and occasion enquiry flows
 - Integrated social journal connected to original Royal Petals posts
+- Distinct, proportion-safe editorial media across the catalogue, garden, campaigns, and journal
 
 ### Business operations
 
 - Private admin corner
-- Stock and availability controls
+- Stock and availability controls with reservation, release, and oversell protection
 - Order, payment, and fulfilment pipeline
 - Sales and performance overview
 - Customer and loyalty administration
 - Enquiry and bespoke-commission management
 - Content and configuration controls
+- Auditable order transitions and once-only loyalty settlement
 
 ## System shape
 
@@ -82,6 +84,6 @@ The final experience was inspected at 360 × 740, 390 × 844, and 430 × 932 vie
 ## Credits
 
 Client: [Royal Petals Namibia](https://www.instagram.com/royal_petals_nam/)<br>
-Creative direction, product design, and engineering: [SolarSpin Technologies](https://solarspin-namibia.pages.dev/)
+Creative direction, product design, and engineering: [SolarSpin Technologies](https://solarspin.tech/)
 
 © Royal Petals and SolarSpin Technologies. All client names, marks, and media remain the property of their respective owners.
