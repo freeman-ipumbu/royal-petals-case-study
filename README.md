@@ -1,89 +1,122 @@
 # Royal Petals — A Digital Floristry Experience
 
-An independent public case study for the digital transformation of Royal Petals Namibia, designed and engineered by [SolarSpin Technologies](https://solarspin.tech/).
+An independent public case study for the digital transformation of [Royal Petals Namibia](https://www.instagram.com/royal_petals_nam/), designed and engineered by [SolarSpin Technologies](https://solarspin.tech/).
 
-[Visit the live experience](https://royal-petals.pages.dev/) · [Royal Petals on Instagram](https://www.instagram.com/royal_petals_nam/)
+[Visit the Royal Petals experience](https://royal-petals.pages.dev/) · [Follow Royal Petals on Instagram](https://www.instagram.com/royal_petals_nam/)
 
-## The brief
+## The house
 
-Royal Petals needed more than a conventional catalogue. The goal was to translate the confidence, intimacy, and drama of premium floristry into an online experience where clients can discover available arrangements, personalise a commission, arrange delivery, return easily, and feel looked after throughout the journey.
+Royal Petals Namibia was founded by Cindy Mbako in 2019 and is led by directors Cindy Mbako and Theo Amutjira. The brand approaches flowers as expressions of love, appreciation, celebration, and connection—not disposable catalogue items.
 
-The operational side mattered just as much: the business needed a private place to manage stock, orders, fulfilment, sales, clients, rewards, and enquiries without flattening the customer experience into a generic store template.
+The digital brief therefore went beyond putting products online. Royal Petals needed an experience that could carry the theatre of the work, make ordering feel personal, and give the team a practical operating system for stock, sales, fulfilment, clients, rewards, and private enquiries.
 
 ## Experience direction
 
-The creative system treats each visit like entering a modern floral atelier:
+The creative system treats every visit like entering a modern floral salon:
 
-- Deep burgundy, blush, parchment, and antique-gold tones create warmth without relying on a flat painted background.
-- Editorial photography, layered botanical forms, film-like transitions, and responsive compositions give the page movement and depth.
-- A custom Royal Petals monogram and restrained display typography establish a recognisable luxury signature.
-- The interface remains intentionally simple: strong product hierarchy, clear actions, readable prices in Namibian dollars, and touch-first controls.
-- Mobile layouts are composed for the viewport instead of being reduced desktop screens, including safe areas, thumb reach, full-height panels, and correctly proportioned media.
+- Deep burgundy, parchment, blush, antique gold, and garden green establish a recognisable house palette.
+- Layered architectural scenery, oversized florals, editorial photography, subtle motion, and tactile panels replace flat painted backgrounds.
+- A custom petal crest and Royal Petals wordmark create a flexible signature across the storefront, install icon, loading sequence, and admin studio.
+- Product imagery keeps deliberate aspect ratios and focal positions so arrangements and presentation boxes remain correctly proportioned.
+- Mobile layouts are composed for the viewport rather than reduced from desktop, with safe areas, touch-first controls, full-height panels, and an expressive petal menu.
+- The interface remains clear beneath the drama: prices use Namibian dollars, stock states are explicit, and every primary action has a defined destination.
 
 ## What was built
 
 ### Client experience
 
-- Responsive, installable progressive web app
-- Twelve-product live catalogue covering signature bouquets, sculptural wraps, hatboxes, reveal boxes, keepsake drawers, and flower-and-chocolate compositions
-- Arrangement customisation, personal notes, and bouquet enquiries
-- Persistent cart and return-client journey
-- Cash, EFT, and wallet checkout foundations, with a future TPTS integration seam
-- Details-first delivery checkout with an optional interactive precision pin
-- Concierge-led product recommendations
-- Royal Circle loyalty concept and rewards ledger
-- Bespoke commission and occasion enquiry flows
-- Integrated social journal connected to original Royal Petals posts
-- Distinct, proportion-safe editorial media across the catalogue, garden, campaigns, and journal
+- Responsive, installable progressive web app with an offline shell
+- Twelve-piece catalogue spanning signature bouquets, sculptural wraps, hatboxes, reveal boxes, keepsake drawers, chocolates, and celebration compositions
+- Live availability states, scale and palette choices, add-ons, florist notes, gift messages, and a persistent cart
+- Details-first checkout for sender, recipient, full address, unit or office, suburb, date, delivery window, handover instructions, and payment preference
+- Optional precision pin after the written address—not a map-gated checkout
+- Returning-client profiles with saved recipients and saved delivery places
+- Cash, EFT, and wallet order preferences, with TPTS prepared as a future gateway integration rather than presented as active
+- The Royal Circle loyalty journey with configurable earning rules, checkout redemption, and automatic credit restoration when an order is cancelled
+- Private promotional codes with minimum-spend, usage-limit, expiry, activation, and pause controls
+- Concierge-led recommendations and bespoke commission enquiries
+- An editorial social journal linked to original Royal Petals posts
+- An About experience carrying the company story, founders, standards, and wholesale ambition
+
+### Delivery intelligence
+
+- Debounced Google Places suggestions with curated Windhoek-area and typed-address fallbacks
+- Google Routes estimates for driving distance, duration, and delivery pricing when configured
+- Reverse geocoding for optional pins and support for a Cloud-styled Google map
+- An interactive OpenStreetMap fallback, so address entry and ordering remain usable without Google credentials
+- Service-radius safeguards and a concierge handoff for deliveries outside configured zones
+
+Google Maps JavaScript API, Places API (New), Geocoding API, and Routes API are integration points that require restricted production keys. Google Address Validation is intentionally not claimed: Namibia is not currently supported by that product.
 
 ### Business operations
 
-- Private admin corner
-- Stock and availability controls with reservation, release, and oversell protection
-- Order, payment, and fulfilment pipeline
-- Sales and performance overview
-- Customer and loyalty administration
-- Enquiry and bespoke-commission management
-- Content and configuration controls
-- Auditable order transitions and once-only loyalty settlement
+- Private Royal Petals Studio with protected owner access
+- Stock counts, availability, prices, featured products, and catalogue visibility controls
+- Aggregate stock validation, reservation, release, and oversell protection
+- Order-line personalisation, confirmed delivery fees, payment state, and fulfilment workflow
+- Sales overview, payment split, recent orders, house favourites, and operational alerts
+- Client book, lifetime spend, loyalty balances, and CSV export safeguards
+- New, contacted, quoted, won, and closed lanes for bespoke enquiries
+- Delivery-zone and Royal Circle configuration
+- Promotion creation, monitoring, pausing, and reactivation
+- Auditable transitions and once-only loyalty settlement
+
+## Journey
+
+```mermaid
+flowchart LR
+  Discover[Discover the collection] --> Personalise[Personalise the flowers]
+  Personalise --> Bag[Review the gesture]
+  Bag --> Details[Enter sender and recipient details]
+  Details --> Address[Type the full delivery address]
+  Address --> Pin{Need gate-level precision?}
+  Pin -->|Optional| Map[Add an exact pin]
+  Pin -->|No| Timing[Choose timing]
+  Map --> Timing
+  Timing --> Payment[Choose cash, EFT, or wallet]
+  Payment --> Reserve[Send the order request]
+  Reserve --> Confirm[Cindy confirms stock, timing, and payment]
+```
 
 ## System shape
 
 ```mermaid
 flowchart TD
   Customer[Customer PWA] --> Storefront[Cloudflare Pages storefront]
-  Storefront --> API[Royal Petals data API]
-  API --> Data[(Cloudflare D1)]
-  Studio[Private studio admin] --> API
-  Storefront --> Delivery[Interactive delivery layer]
+  Storefront --> API[Royal Petals data Worker]
+  API --> Data[(Durable Object SQLite)]
+  Studio[Private Royal Petals Studio] --> API
+  Storefront --> Delivery[Google-enabled delivery layer]
+  Delivery --> Fallback[OpenStreetMap and typed-address fallback]
   Storefront --> Checkout[Cash / EFT / wallets]
-  Checkout -. future .-> TPTS[TPTS gateway]
+  Checkout -. prepared integration .-> TPTS[TPTS gateway]
 ```
 
-## Mobile hardening
+## Production discipline
 
-The final experience was inspected at 360 × 740, 390 × 844, and 430 × 932 viewport sizes. The work covered:
+The release gate covers:
 
-- Exact media aspect ratios and deliberate crop behaviour
-- Safe-area-aware navigation and action bars
-- Minimum 44 px touch targets
-- Mobile form sizing that avoids unwanted browser zoom
-- Full-height product, checkout, concierge, and bespoke panels
-- Two-column merchandising where space permits, with a small-screen fallback
-- Natural-height social imagery instead of forced, distorted cards
-- Reduced-motion support and keyboard-visible focus states
-- End-to-end checks across browsing, product customisation, cart, checkout, map, loyalty, concierge, bespoke requests, menu, and footer
+- Source checks, type checks, linting, and a production build
+- Desktop, tablet, and mobile visual inspection
+- Media crop, aspect-ratio, empty-space, overflow, and safe-area checks
+- Keyboard focus, dialog focus trapping, reduced-motion behaviour, and touch-target checks
+- Catalogue, customisation, cart, details-first checkout, optional map, loyalty, promotion, concierge, enquiry, and admin flows
+- API smoke checks for catalogue, public configuration, orders, account data, delivery quoting, promotions, and admin authorization
+- Live endpoint and deployment checks after the Cloudflare release completes
 
-## Delivery principles
+## Boundaries
 
-- No unverified performance or conversion claims
-- No production secrets or private source code in this public repository
-- No client media redistributed here; the live experience remains the canonical presentation
-- Final prices, inventory, delivery policies, payment details, and contact information remain client-controlled business data
+- No unverified performance, conversion, revenue, or customer claims
+- No production secrets, private application source, or admin credentials in this public repository
+- No client media redistributed here; the deployed experience remains the canonical visual presentation
+- No claim that Google services or TPTS are active until the required client-controlled credentials and commercial configuration are supplied
+- Final catalogue prices, stock, delivery fees, banking details, wallet instructions, contact details, and service hours remain controlled by Royal Petals
 
 ## Credits
 
 Client: [Royal Petals Namibia](https://www.instagram.com/royal_petals_nam/)<br>
+Founder & director: Cindy Mbako<br>
+Director: Theo Amutjira<br>
 Creative direction, product design, and engineering: [SolarSpin Technologies](https://solarspin.tech/)
 
 © Royal Petals and SolarSpin Technologies. All client names, marks, and media remain the property of their respective owners.
