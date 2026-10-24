@@ -1,6 +1,6 @@
 # Royal Petals — A Digital Floristry Experience
 
-An independent public case study for the digital transformation of [Royal Petals Namibia](https://www.instagram.com/royal_petals_nam/), designed and engineered by [SolarSpin Technologies](https://solarspin.tech/).
+An independent public case study for the digital transformation of [Royal Petals Namibia](https://www.instagram.com/royal_petals_nam/), designed and engineered by [SolarSpin Technologies](https://solarspin-namibia.pages.dev/).
 
 [Visit the Royal Petals experience](https://royal-petals.pages.dev/) · [Follow Royal Petals on Instagram](https://www.instagram.com/royal_petals_nam/)
 
@@ -117,6 +117,6 @@ The release gate covers:
 Client: [Royal Petals Namibia](https://www.instagram.com/royal_petals_nam/)<br>
 Founder & director: Cindy Mbako<br>
 Director: Theo Amutjira<br>
-Creative direction, product design, and engineering: [SolarSpin Technologies](https://solarspin.tech/)
+Creative direction, product design, and engineering: [SolarSpin Technologies](https://solarspin-namibia.pages.dev/)
 
 © Royal Petals and SolarSpin Technologies. All client names, marks, and media remain the property of their respective owners.
